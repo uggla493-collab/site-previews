@@ -1,0 +1,92 @@
+{
+  "product": "Lantern Ledger",
+  "version": "1.0.1",
+  "date": "2026-10-18",
+  "files": [
+    {
+      "name": "index.html",
+      "bytes": 8614,
+      "sha256": "28edcfe0264bdaaf2628779a28ace0cfe6839452507d8b59f98dcf96af005cca"
+    },
+    {
+      "name": "styles.css",
+      "bytes": 12074,
+      "sha256": "4f36634516f2a3e7c17ed7699994bdbfd7c7a966e584d96ac95a16138d5a43c6"
+    },
+    {
+      "name": "core.js",
+      "bytes": 12085,
+      "sha256": "36bb5d475ad07334d12b968a2e115143963ad109f490e7cc11c056904cae2b83"
+    },
+    {
+      "name": "app.js",
+      "bytes": 21426,
+      "sha256": "b4cfdaf3063c315cf3955857313ab453eab3b3583c2d9d71cd84e79889406025"
+    },
+    {
+      "name": "sample-campaign.json",
+      "bytes": 3417,
+      "sha256": "788912a5c279c87768821e23a4ab9b2b3c753c6fbe3f77bff1f45d68214c9457"
+    },
+    {
+      "name": "README.md",
+      "bytes": 11348,
+      "sha256": "76b7abe59702a10ae6c1af374dabe1417d46542cb1d675331180ad9394878e34"
+    },
+    {
+      "name": "CHECKS.md",
+      "bytes": 5185,
+      "sha256": "79d3d3093dc35b8b78584fb760227972913f3e0ef9f97a83b0ccf9f80b60cd73"
+    },
+    {
+      "name": "RELEASE-NOTES.md",
+      "bytes": 2098,
+      "sha256": "33d5c0828580519b8074d49eb685081a7b82faf24e2b7b9cd4ed9a5cecf74a37"
+    },
+    {
+      "name": "ASSETS.md",
+      "bytes": 1010,
+      "sha256": "2ed8093946e6a92b79e5a0377d6efbce2653e5b1a91e04326ba7b0ebba391ad9"
+    },
+    {
+      "name": "LICENSE.txt",
+      "bytes": 1235,
+      "sha256": "e379a98d01ac8f211ccbec382be88e2918bc36d1be520947f29d72e45f580f17"
+    },
+    {
+      "name": "SALES-DESCRIPTION.md",
+      "bytes": 2242,
+      "sha256": "7abbbf32c83057a16dcc1e8b534f9c6c4dc1bdfb7cebb8a069a0e8b9b18f735b"
+    },
+    {
+      "name": "CHANNEL-NOTES.md",
+      "bytes": 1786,
+      "sha256": "bb4f220d9a49bb840df6d8e07248fd5a17214da392408aaba1ddac89e657fd70"
+    },
+    {
+      "name": "tests.cjs",
+      "bytes": 20692,
+      "sha256": "80ff94ff3126de2b732b02b955445fe21de423ca87e88409e462323b8acca8d2"
+    },
+    {
+      "name": "ui-harness.cjs",
+      "bytes": 7103,
+      "sha256": "889f28905d1cdb83e846af29fa6407467c6f72f4a26eea6f4539701d2f9b6317"
+    },
+    {
+      "name": "TEST-RESULTS.txt",
+      "bytes": 10171,
+      "sha256": "1d4c83499cc81f210496df6da9f65e267d223c9258f810d2f0998dcef0746a46"
+    },
+    {
+      "name": "package-release.cjs",
+      "bytes": 3503,
+      "sha256": "41aa5b90bef780151fc60d7233888f84218ea3f7c370b8d8264f78edc6fff169"
+    },
+    {
+      "name": "verify-release.cjs",
+      "bytes": 3586,
+      "sha256": "023f32f7eb54c062d0296b63bbb628eaa12e7bc4f93364f7e50a71ab801e6390"
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+TAP version 13
+# Subtest: original sample passes schema and JSON round-trip
+ok 1 - original sample passes schema and JSON round-trip
+  ---
+  duration_ms: 2.5316
+  type: 'test'
+  ...
+# Subtest: campaign create, read, edit, delete preserves original input
+ok 2 - campaign create, read, edit, delete preserves original input
+  ---
+  duration_ms: 5.2925
+  type: 'test'
+  ...
+# Subtest: sessions create, read, edit, delete
+ok 3 - sessions create, read, edit, delete
+  ---
+  duration_ms: 1.0629
+  type: 'test'
+  ...
+# Subtest: npcs create, read, edit, delete
+ok 4 - npcs create, read, edit, delete
+  ---
+  duration_ms: 0.3934
+  type: 'test'
+  ...
+# Subtest: locations create, read, edit, delete
+ok 5 - locations create, read, edit, delete
+  ---
+  duration_ms: 0.6893
+  type: 'test'
+  ...
+# Subtest: hooks create, read, edit, delete
+ok 6 - hooks create, read, edit, delete
+  ---
+  duration_ms: 0.3975
+  type: 'test'
+  ...
+# Subtest: recreated repository reloads all persisted edits
+ok 7 - recreated repository reloads all persisted edits
+  ---
+  duration_ms: 0.7492
+  type: 'test'
+  ...
+# Subtest: backup restores all records into a separate repository
+ok 8 - backup restores all records into a separate repository
+  ---
+  duration_ms: 0.4854
+  type: 'test'
+  ...
+# Subtest: search covers every type, case, multiword, and no matches
+ok 9 - search covers every type, case, multiword, and no matches
+  ---
+  duration_ms: 0.699
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: malformed JSON
+ok 10 - rejected import leaves disk and memory intact: malformed JSON
+  ---
+  duration_ms: 1.1542
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: null
+ok 11 - rejected import leaves disk and memory intact: null
+  ---
+  duration_ms: 0.2889
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: wrong top-level type
+ok 12 - rejected import leaves disk and memory intact: wrong top-level type
+  ---
+  duration_ms: 0.2201
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: unknown version
+ok 13 - rejected import leaves disk and memory intact: unknown version
+  ---
+  duration_ms: 0.1964
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: missing field
+ok 14 - rejected import leaves disk and memory intact: missing field
+  ---
+  duration_ms: 0.2399
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: wrong array type
+ok 15 - rejected import leaves disk and memory intact: wrong array type
+  ---
+  duration_ms: 0.275
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: wrong scalar type
+ok 16 - rejected import leaves disk and memory intact: wrong scalar type
+  ---
+  duration_ms: 0.2794
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: duplicate ID
+ok 17 - rejected import leaves disk and memory intact: duplicate ID
+  ---
+  duration_ms: 0.2392
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: blank name
+ok 18 - rejected import leaves disk and memory intact: blank name
+  ---
+  duration_ms: 0.2916
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: invalid status
+ok 19 - rejected import leaves disk and memory intact: invalid status
+  ---
+  duration_ms: 0.2677
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: impossible date
+ok 20 - rejected import leaves disk and memory intact: impossible date
+  ---
+  duration_ms: 10.2289
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: oversized field
+ok 21 - rejected import leaves disk and memory intact: oversized field
+  ---
+  duration_ms: 0.8092
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: prototype property
+ok 22 - rejected import leaves disk and memory intact: prototype property
+  ---
+  duration_ms: 0.237
+  type: 'test'
+  ...
+# Subtest: rejected import leaves disk and memory intact: oversized UTF-8
+ok 23 - rejected import leaves disk and memory intact: oversized UTF-8
+  ---
+  duration_ms: 3.0587
+  type: 'test'
+  ...
+# Subtest: limits reject 51 campaigns and 501 records
+ok 24 - limits reject 51 campaigns and 501 records
+  ---
+  duration_ms: 1.8873
+  type: 'test'
+  ...
+# Subtest: date validation handles leap years, empty dates, and year zero
+ok 25 - date validation handles leap years, empty dates, and year zero
+  ---
+  duration_ms: 0.2261
+  type: 'test'
+  ...
+# Subtest: storage failure does not advance saved state
+ok 26 - storage failure does not advance saved state
+  ---
+  duration_ms: 0.4467
+  type: 'test'
+  ...
+# Subtest: another tab's changes cannot be overwritten
+ok 27 - another tab's changes cannot be overwritten
+  ---
+  duration_ms: 0.4545
+  type: 'test'
+  ...
+# Subtest: corrupt saved data is retained until an explicit valid restore
+ok 28 - corrupt saved data is retained until an explicit valid restore
+  ---
+  duration_ms: 0.3613
+  type: 'test'
+  ...
+# Subtest: print summary includes only current open hooks
+ok 29 - print summary includes only current open hooks
+  ---
+  duration_ms: 0.271
+  type: 'test'
+  ...
+# Subtest: UI creates, edits, and deletes a campaign; reload reads saved state
+ok 30 - UI creates, edits, and deletes a campaign; reload reads saved state
+  ---
+  duration_ms: 111.5296
+  type: 'test'
+  ...
+# Subtest: UI sessions save, edit, delete event flow
+ok 31 - UI sessions save, edit, delete event flow
+  ---
+  duration_ms: 25.5869
+  type: 'test'
+  ...
+# Subtest: UI npcs save, edit, delete event flow
+ok 32 - UI npcs save, edit, delete event flow
+  ---
+  duration_ms: 22.2483
+  type: 'test'
+  ...
+# Subtest: UI locations save, edit, delete event flow
+ok 33 - UI locations save, edit, delete event flow
+  ---
+  duration_ms: 19.3468
+  type: 'test'
+  ...
+# Subtest: UI hooks save, edit, delete event flow
+ok 34 - UI hooks save, edit, delete event flow
+  ---
+  duration_ms: 24.0672
+  type: 'test'
+  ...
+# Subtest: UI searches across campaigns and opens a matching entry
+ok 35 - UI searches across campaigns and opens a matching entry
+  ---
+  duration_ms: 11.4943
+  type: 'test'
+  ...
+# Subtest: UI export is a downloadable valid backup and validated restore waits for confirmation
+ok 36 - UI export is a downloadable valid backup and validated restore waits for confirmation
+  ---
+  duration_ms: 16.6041
+  type: 'test'
+  ...
+# Subtest: UI malformed import keeps original archive and shows error
+ok 37 - UI malformed import keeps original archive and shows error
+  ---
+  duration_ms: 7.6899
+  type: 'test'
+  ...
+# Subtest: UI storage quota failure retains editor draft and previous archive
+ok 38 - UI storage quota failure retains editor draft and previous archive
+  ---
+  duration_ms: 8.0392
+  type: 'test'
+  ...
+# Subtest: UI corrupt-storage recovery protects raw data and restores valid backup
+ok 39 - UI corrupt-storage recovery protects raw data and restores valid backup
+  ---
+  duration_ms: 9.6832
+  type: 'test'
+  ...
+# Subtest: UI temporary mode warns and still allows backup export
+ok 40 - UI temporary mode warns and still allows backup export
+  ---
+  duration_ms: 10.173
+  type: 'test'
+  ...
+# Subtest: UI print preview excludes private notes by default and supports opt-in
+ok 41 - UI print preview excludes private notes by default and supports opt-in
+  ---
+  duration_ms: 9.7418
+  type: 'test'
+  ...
+# Subtest: UI cancel protects unsaved drafts when discard is declined
+ok 42 - UI cancel protects unsaved drafts when discard is declined
+  ---
+  duration_ms: 9.9471
+  type: 'test'
+  ...
+# Subtest: imported HTML-like content stays plain text
+ok 43 - imported HTML-like content stays plain text
+  ---
+  duration_ms: 9.6428
+  type: 'test'
+  ...
+# Subtest: scripts compile, all referenced assets are local, network APIs and HTML injection are absent
+ok 44 - scripts compile, all referenced assets are local, network APIs and HTML injection are absent
+  ---
+  duration_ms: 1.3381
+  type: 'test'
+  ...
+# Subtest: print stylesheet isolates summary, uses page margins and wrapping; mobile layout exists
+ok 45 - print stylesheet isolates summary, uses page margins and wrapping; mobile layout exists
+  ---
+  duration_ms: 0.2833
+  type: 'test'
+  ...
+# Subtest: direct printing never inherits private-note opt-in from a closed preview
+ok 46 - direct printing never inherits private-note opt-in from a closed preview
+  ---
+  duration_ms: 10.8053
+  type: 'test'
+  ...
+# Subtest: overlapping imports only preview and restore the latest selected file
+ok 47 - overlapping imports only preview and restore the latest selected file
+  ---
+  duration_ms: 9.9635
+  type: 'test'
+  ...
+# Subtest: a stale read failure cannot cancel the latest valid restore
+ok 48 - a stale read failure cannot cancel the latest valid restore
+  ---
+  duration_ms: 9.4368
+  type: 'test'
+  ...
+# Subtest: new file selection invalidates an earlier restore confirmation immediately
+ok 49 - new file selection invalidates an earlier restore confirmation immediately
+  ---
+  duration_ms: 7.7451
+  type: 'test'
+  ...
+# Subtest: restore write failure preserves current data and lets the user retry
+ok 50 - restore write failure preserves current data and lets the user retry
+  ---
+  duration_ms: 13.7328
+  type: 'test'
+  ...
+# Subtest: editing campaign details preserves every child record after reload
+ok 51 - editing campaign details preserves every child record after reload
+  ---
+  duration_ms: 15.7782
+  type: 'test'
+  ...
+# Subtest: conflicting UI save retains the draft and the other tab's stored archive
+ok 52 - conflicting UI save retains the draft and the other tab's stored archive
+  ---
+  duration_ms: 22.2439
+  type: 'test'
+  ...
+# Subtest: distributed sample equals the embedded original campaign
+ok 53 - distributed sample equals the embedded original campaign
+  ---
+  duration_ms: 0.6026
+  type: 'test'
+  ...
+# Subtest: long multilingual print content stays complete and private notes stay excluded
+ok 54 - long multilingual print content stays complete and private notes stay excluded
+  ---
+  duration_ms: 12.2681
+  type: 'test'
+  ...
+1..54
+# tests 54
+# suites 0
+# pass 54
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 549.3521

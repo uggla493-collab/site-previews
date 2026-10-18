@@ -1,0 +1,11 @@
+2026-10-18 | Node.js v25.8.2 | Python 3.12.10
+
+Built lantern-ledger-1.0.1.zip: 18 files, 132062 bytes
+SHA-256 5ef17f0304097342fe84057f1a37c0be452839f27fa379bd0f101c7a0f888e40
+PASS: 18 allowlisted ZIP entries; local/central records; CRC-32; SHA-256;
+manifest; source byte equality; archive checksum; app entry point; sample parity.
+Archive: lantern-ledger-1.0.1.zip (132062 bytes)
+PASS: Python 3.12.10 zipfile independently read all 18 entries; CRC, manifest hashes, safe flat names, and source byte equality.
+PASS: two consecutive builds produced identical ZIP bytes.
+
+No browser rendering, native downloads, or actual print pagination verified.

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="sv">
+<head><meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Makerkoll – konsignation offline</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body><div role="note" data-preview-banner style="position:sticky;top:0;z-index:2147483647;margin:0;background:#111;color:#fff;font:14px/1.4 system-ui,sans-serif;padding:8px 12px;text-align:center">Koncept/f&ouml;rhandsvisning av Ville Olsson Wessling &ndash; inte f&ouml;retagets officiella webbplats. Formul&auml;r &auml;r avst&auml;ngda. &middot; Concept preview by Ville Olsson Wessling &ndash; not the official website. Forms are disabled.</div>
+  <main>
+    <header>
+      <p class="eyebrow">MAKERKOLL / LOKAL PROTOTYP</p>
+      <h1>Från leverans till ersättning.</h1>
+      <p>Räkna lager, provision och tillverkarens ersättning för en produkt och en omgång.</p>
+    </header>
+    <aside class="notice"><strong>Fiktivt exempel vid start.</strong> Namn, varor, försäljning och utbetalningar är påhittade.
+      Dina egna inmatningar är inte verifierade. Prototypen visar inte verkliga intäkter eller bevisad efterfrågan.</aside>
+    <div class="layout">
+      <section class="panel" aria-labelledby="input-title">
+        <h2 id="input-title">1. Fyll i underlaget</h2>
+        <form id="calculator" novalidate action="#" onsubmit="return false" data-preview="disabled">
+          <div class="fields">
+            <label class="wide">Tillverkare<input name="maker" maxlength="200" autocomplete="off"></label>
+            <label class="wide">Produkt<input name="product" maxlength="200" autocomplete="off"></label>
+            <label>Levererat antal<input name="delivered" inputmode="numeric" required></label>
+            <label>Sålt före returer<input name="sold" inputmode="numeric" required></label>
+            <label class="wide">Återbetalda returer som återförts till lager<input name="returned" inputmode="numeric" required aria-describedby="return-help"></label>
+            <p id="return-help" class="hint wide">Varje retur återbetalas helt till samma styckpris och är åter säljbar. Ange totalt sålt före dessa returer.</p>
+            <label>Styckpris (SEK)<input name="price" inputmode="decimal" required></label>
+            <label>Butikens provision (%)<input name="commission" inputmode="decimal" required></label>
+            <label>Egen kostnad per nettosåld vara (SEK)<input name="unitCost" inputmode="decimal" required></label>
+            <label>Övriga egna kostnader (SEK)<input name="otherCosts" inputmode="decimal" required></label>
+            <label class="wide">Redan utbetalt till tillverkaren (SEK)<input name="paid" inputmode="decimal" required></label>
+          </div>
+          <button type="submit" class="primary">Beräkna</button>
+          <p id="error" class="error" role="alert"></p>
+        </form>
+      </section>
+      <section class="panel" aria-labelledby="result-title">
+        <h2 id="result-title">2. Läs av avräkningen</h2>
+        <div id="results" aria-live="polite" aria-atomic="true">
+          <dl class="metrics">
+            <div><dt>Kvar i lager</dt><dd id="stock"></dd></div>
+            <div><dt>Nettoförsäljning efter returer</dt><dd id="netSalesOre"></dd></div>
+            <div><dt>Butikens provision</dt><dd id="commissionOre"></dd></div>
+            <div><dt>Tillverkarens ersättning före egna kostnader</dt><dd id="entitlementOre"></dd></div>
+            <div class="due"><dt>Kvar att betala till tillverkaren</dt><dd id="outstandingOre"></dd></div>
+            <div><dt>Tillverkarens resultat efter egna kostnader</dt><dd id="profitOre"></dd></div>
+          </dl>
+          <details>
+            <summary>Visa beräkningsdetaljer</summary>
+            <dl class="details">
+              <dt>Försäljning före returer</dt><dd id="grossSalesOre"></dd>
+              <dt>Återbetalningar till kunder</dt><dd id="refundsOre"></dd>
+              <dt>Egna kostnader totalt</dt><dd id="costsOre"></dd>
+              <dt>Överbetalt till tillverkaren</dt><dd id="overpaidOre"></dd>
+            </dl>
+          </details>
+          <p class="hint">Ersättning = nettoförsäljning − provision. Resultat = ersättning − egna kostnader.
+            Redan utbetalt minskar bara saldot att betala, inte ersättningen eller resultatet.</p>
+        </div>
+        <div class="actions">
+          <button id="export" type="button" class="primary">Exportera CSV</button>
+          <button id="save" type="button">Spara lokalt</button>
+          <button id="load" type="button">Läs sparat</button>
+          <button id="sample" type="button">Läs fiktivt exempel</button>
+          <button id="clear" type="button">Nollställ formulär</button>
+        </div>
+        <p id="status" class="hint" role="status"></p>
+      </section>
+    </div>
+    <section class="panel instructions" aria-labelledby="help-title">
+      <h2 id="help-title">Så använder du prototypen</h2>
+      <ol>
+        <li>Öppna denna fil i en modern webbläsare. Allt körs lokalt utan internet.</li>
+        <li>Ersätt exempeluppgifterna. Antal anges i hela tal; belopp och procent kan ha högst två decimaler med komma eller punkt.</li>
+        <li>Kontrollera lager och avräkning. Ogiltiga värden döljer resultatet tills de är rättade.</li>
+        <li>Välj Spara lokalt för att behålla uppgifterna i samma webbläsare, och Läs sparat nästa gång.
+          CSV ger ett fristående underlag. CSV kan inte importeras här.</li>
+      </ol>
+      <p><strong>Exempelkontroll:</strong> 10 levererade, 4 sålda à 200 SEK, 1 återbetald retur och 30 % provision:
+        7 i lager, 600 SEK netto, 180 SEK provision, 420 SEK ersättning och 120 SEK kvar efter 300 SEK utbetalt.
+        Med exemplets egna kostnad 50 SEK per nettosåld vara blir resultatet 270 SEK.</p>
+      <p class="hint">En omgång har ett gemensamt pris och en provisionssats. Sålt antal får inte överstiga levererat antal;
+        återförsäljning av returer i samma omgång stöds inte. Provisionsbeloppet avrundas en gång på omgångens
+        nettoförsäljning till närmaste öre, halva ören uppåt. Egna varukostnader räknas bara för nettosålda varor.
+        Ingen momsberäkning, bokföring, betalning, synkronisering eller transaktionshistorik ingår.</p>
+    </section>
+    <footer>Offline • Inga externa tjänster • Inga betalningar utförs</footer>
+    <noscript>JavaScript behöver vara aktiverat för att beräkna och exportera.</noscript>
+  </main>
+</body>
+</html>

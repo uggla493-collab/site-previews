@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="light">
+  <title>Lantern Ledger · Campaign organizer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body><div role="note" data-preview-banner style="position:sticky;top:0;z-index:2147483647;margin:0;background:#111;color:#fff;font:14px/1.4 system-ui,sans-serif;padding:8px 12px;text-align:center">Koncept/f&ouml;rhandsvisning av Ville Olsson Wessling &ndash; inte f&ouml;retagets officiella webbplats. Formul&auml;r &auml;r avst&auml;ngda. &middot; Concept preview by Ville Olsson Wessling &ndash; not the official website. Forms are disabled.</div>
+  <a class="skip-link" href="#workspace">Skip to campaign</a>
+  <header class="masthead">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><div><strong>Lantern Ledger</strong><span>A place for the next chapter</span></div></div>
+    <div class="top-actions"><span class="offline">Offline · no account</span><button id="help-button" class="quiet">Guide</button><button id="export-button">Export backup</button><label class="button quiet" for="import-file">Restore JSON</label><input id="import-file" class="visually-hidden" type="file" accept=".json,application/json"></div>
+  </header>
+  <div class="storage-banner"><strong>Your stories live in this browser.</strong> Clearing site data, private browsing, or moving these files can lose them. Export a JSON backup after every session.</div>
+  <div id="notice" class="notice" role="status" aria-live="polite"></div>
+  <section id="recovery" class="recovery" hidden>
+    <h1>Your saved archive needs attention</h1>
+    <p id="recovery-message"></p><p>Editing is paused to protect the original data. Download the unreadable archive before restoring a valid Lantern Ledger backup. Restore replaces the archive only after validation and confirmation.</p>
+    <button id="download-raw">Download unreadable archive</button>
+  </section>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Campaign library">
+      <div class="eyebrow">YOUR LIBRARY</div>
+      <h2>Campaigns <span id="campaign-count" class="count">0</span></h2>
+      <button id="new-campaign" class="primary wide">+ New campaign</button>
+      <nav id="campaign-list" aria-label="Select a campaign"></nav>
+      <div class="sidebar-foot"><span class="eyebrow">AT YOUR TABLE</span><p>Keep the people, places, and loose ends close. Leave room for surprise.</p><small>Independent distribution prototype<br>No game system required · v1.0</small></div>
+    </aside>
+    <main id="workspace" tabindex="-1">
+      <div class="search-row"><label for="search">Search your entire library</label><input id="search" type="search" placeholder="A name, a place, an unfinished promise…" maxlength="200" autocomplete="off"><button id="clear-search" class="quiet" hidden>Clear</button></div>
+      <section id="search-panel" hidden><div class="section-top"><h1>Search results</h1><span id="search-count" role="status"></span></div><p class="muted">Matches all words across campaign text, session notes, people, places, and hooks.</p><div id="search-results" class="card-grid"></div></section>
+      <section id="campaign-panel">
+        <div id="empty-library" class="empty" hidden><span class="empty-symbol" aria-hidden="true">✦</span><h1>A new story starts here</h1><p>Create a campaign to collect your sessions, characters, places, and loose ends.</p><button id="empty-new" class="primary">Create a campaign</button></div>
+        <div id="campaign-content" hidden>
+          <header class="campaign-header"><div><div class="eyebrow">CAMPAIGN NOTEBOOK</div><h1 id="campaign-title"></h1><p id="campaign-premise" class="premise"></p></div><div class="campaign-actions"><button id="edit-campaign">Edit campaign</button><button id="print-button">Print session</button><button id="delete-campaign" class="danger quiet">Delete campaign</button></div></header>
+          <nav class="tabs" aria-label="Notebook sections">
+            <button data-tab="overview" aria-current="page">Overview</button><button data-tab="sessions">Sessions <span id="count-sessions"></span></button><button data-tab="npcs">NPCs <span id="count-npcs"></span></button><button data-tab="locations">Locations <span id="count-locations"></span></button><button data-tab="hooks">Hooks <span id="count-hooks"></span></button>
+          </nav>
+          <div id="overview"></div>
+          <section id="records-panel" hidden><div class="section-top"><div><h2 id="records-title"></h2><p id="records-description" class="muted"></p></div><button id="add-record" class="primary"></button></div>
+            <div id="hook-filter-row" hidden><label for="hook-filter">Show hooks</label><select id="hook-filter"><option value="all">All hooks</option><option value="open">Unresolved only</option><option value="resolved">Resolved only</option></select></div>
+            <div id="record-list" class="card-grid"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="page-footer"><span id="save-status" role="status">Loading archive…</span><span id="backup-status">Keep a downloaded backup outside your browser.</span></footer>
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form id="editor-form" action="#" onsubmit="return false" data-preview="disabled">
+      <header class="dialog-header"><div><div class="eyebrow">YOUR NOTEBOOK</div><h2 id="editor-title"></h2></div><button type="button" id="editor-close" class="quiet" aria-label="Close editor">✕</button></header>
+      <div id="editor-fields"></div><p id="editor-error" class="error" role="alert"></p>
+      <div class="dialog-actions"><small>Changes are saved when you choose Save.</small><button type="button" id="editor-cancel">Cancel</button><button type="submit" class="primary">Save</button></div>
+    </form>
+  </dialog>
+  <dialog id="restore-dialog" aria-labelledby="restore-title"><h2 id="restore-title">Review this backup</h2><p id="restore-summary"></p><p><strong>This replaces every campaign in this browser.</strong> It does not merge archives. Export your current library first if you want to keep it.</p><div class="dialog-actions"><button id="restore-cancel">Cancel</button><button id="restore-export">Export current library</button><button id="restore-confirm" class="primary">Replace library</button></div><p id="restore-error" class="error" role="alert"></p></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><h2 id="help-title">Your table, on one page</h2>
+    <ol><li>Choose a campaign or create your own. The Tideglass Lantern is an original, editable example.</li><li>Add sessions, NPCs, locations, and hooks. Save each edit. Resolve a hook when its story is complete.</li><li>Search looks across every campaign. Open a result to edit the matching entry.</li><li>After each session, choose <strong>Export backup</strong>. Keep the downloaded JSON in a folder you back up, ideally with a second copy elsewhere.</li><li>To recover, choose <strong>Restore JSON</strong>, review the campaign counts, and confirm replacement. Invalid files never replace your archive.</li><li><strong>Print session</strong> previews a saved session with its summary, next steps, and the campaign's currently unresolved hooks. Private preparation notes are optional.</li></ol>
+    <p><strong>Browser storage is not a backup.</strong> Private windows, storage cleanup, a different browser, or a different file path may remove or hide your data. Export before moving or updating the app. Saves are local and unencrypted. Use one tab at a time.</p>
+    <p>No accounts, network requests, third-party rules, fonts, artwork, or libraries. This is a prototype for possible independent itch.io distribution; demand has not been validated.</p><button id="help-close" class="primary">Back to notebook</button>
+  </dialog>
+  <dialog id="print-dialog" class="print-dialog" aria-labelledby="print-title"><div class="print-controls"><h2 id="print-title">Session print preview</h2><label for="print-session">Session</label><select id="print-session"></select><label class="check-label"><input id="print-private" type="checkbox"> Include private preparation notes</label><p class="muted">Includes currently unresolved hooks, which may contain spoilers. Review before sharing. Print or save as PDF using your browser.</p><div class="dialog-actions"><button id="print-close">Close</button><button id="print-now" class="primary">Print / Save PDF</button></div></div><div id="print-preview"></div></dialog>
+  <section id="print-output" aria-hidden="true"></section>
+  <noscript><p class="notice">Enable JavaScript to use this local notebook. No data is sent anywhere.</p></noscript>
+</body>
+</html>

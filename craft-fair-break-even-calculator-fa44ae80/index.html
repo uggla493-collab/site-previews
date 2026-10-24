@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A free craft-fair break-even calculator. Estimate how many items cover your event costs, with a separate optional time-value target.">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Craft Fair Break-Even Calculator · Wessling Digital</title>
+<style>
+:root{color-scheme:light;--ink:#203c35;--muted:#4b6057;--paper:#f7f5ef;--line:#c5cec4;--green:#244f3f;--error:#9a2323}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1080px;margin:auto;padding:36px 24px 48px}.brand{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:750}
+header{max-width:720px;margin-bottom:32px}.tag{display:inline-block;padding:3px 10px;background:#e2ebdf;border-radius:30px;font-size:.8rem}
+h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.12;letter-spacing:-.035em;margin:18px 0}h2{font-size:1.35rem;margin:0 0 16px}h3{font-size:1rem;margin:0}
+p{margin:10px 0}header p,.hint,.fine{color:var(--muted)}.layout{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:start}
+.layout>*{min-width:0}.preview-banner{border:2px solid var(--green);border-radius:10px;padding:12px 16px;margin:0 0 24px;background:#e3ebdf;overflow-wrap:anywhere}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}.field{margin:0 0 20px}
+label{display:block;font-weight:650;margin-bottom:5px}.hint{display:block;font-size:.88rem;margin-top:5px}
+input{font:inherit;width:100%;min-height:48px;padding:9px 12px;border:1px solid #778b7c;border-radius:7px;color:var(--ink);background:#fff}
+input[aria-invalid=true]{border:2px solid var(--error)}.error{display:block;color:var(--error);font-size:.9rem}.error:empty{display:none}
+fieldset{min-width:0;margin:8px 0 22px;padding:18px 0 0;border:0;border-top:1px solid var(--line)}legend{font-weight:700;padding-right:10px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}.pair .field{margin-bottom:0}
+button,.cta{display:inline-block;font:inherit;font-weight:650;min-height:48px;border:0;border-radius:8px;padding:12px 18px;cursor:pointer;background:var(--green);color:#fff;text-align:center}
+button:hover,.cta:hover{background:#163b2d}.secondary{background:#e6ece2;color:var(--ink);margin-top:10px}.secondary:hover{background:#d5e0d0}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #9b5700;outline-offset:4px}.actions button{width:100%}
+.status{font-size:.9rem;margin:16px 0 0}.result{border-top:1px solid var(--line);padding-top:20px;margin-top:20px}
+.number{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:750;line-height:1.2;margin:8px 0;overflow-wrap:anywhere}
+.contribution{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.contribution strong{font-size:1.25rem}.time{background:#eff3ea;border-radius:10px;padding:18px}
+.notes{margin-top:24px}.notes li{margin:8px 0}.notes ul{padding-left:22px}.example{border-left:4px solid #799274;padding:0 0 0 16px}
+.promo{background:#e3ebdf;border-radius:18px;padding:26px;margin-top:24px}.cta{margin-top:12px;text-decoration:none;max-width:100%;overflow-wrap:anywhere}
+footer{font-size:.85rem;color:var(--muted);margin-top:22px}noscript p{padding:16px;border:2px solid var(--error)}[hidden]{display:none!important}
+@media(max-width:720px){main{padding:24px 16px}.layout{grid-template-columns:1fr}.panel,.promo{padding:20px}header{margin-bottom:24px}}
+@media(max-width:380px){.pair{grid-template-columns:1fr}main{padding:20px 12px}}
+.worksheet-title,.print-link{display:none}.worksheet-assumptions{margin:0 0 20px}.worksheet-assumptions dl{margin:0}.worksheet-assumptions dl>div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:5px 0}.worksheet-assumptions dt{font-weight:600}.worksheet-assumptions dd{margin:0;text-align:right;overflow-wrap:anywhere}.worksheet-note{font-size:.88rem}.share-tools{margin-top:18px}.share-tools input{font-size:.85rem}.print-link{overflow-wrap:anywhere}
+@page{size:auto;margin:12mm}
+@media print{
+body{background:white;color:#000;font:10pt/1.3 Arial,sans-serif}main{max-width:none;padding:0}
+header,.input-panel,.notes,footer,.share-tools,.worksheet-actions,noscript{display:none!important}
+.layout{display:block}.panel{border:0;border-radius:0;padding:0}.preview-banner{background:white;border:1px solid #555;border-radius:0;padding:6pt;margin:0 0 10pt;font-size:9pt}
+.worksheet-title,.print-link{display:block}.screen-title{display:none}h1.worksheet-title{font-size:19pt;line-height:1.2;margin:0 0 10pt}h2{font-size:12pt;margin:0 0 6pt}h3{font-size:11pt}
+p{margin:5pt 0}.hint,.fine{color:#222}.worksheet-assumptions{margin-bottom:10pt}.worksheet-assumptions dl>div{padding:3pt 0}.result{padding-top:8pt;margin-top:8pt;break-inside:avoid}.number{font-size:20pt;margin:4pt 0}.time{background:white;border:1px solid #777;border-radius:0;padding:8pt}.contribution strong{font-size:12pt}.hint,.worksheet-note{font-size:9pt}
+.promo{background:white;border-radius:0;border-top:1px solid #777;margin-top:10pt;padding:8pt 0 0;break-inside:avoid}.promo .cta{display:none}.promo h2{font-size:11pt}.promo p{font-size:9pt}.print-link{font-size:9pt}.worksheet-assumptions{break-inside:avoid}
+}
+</style>
+</head>
+<body><div role="note" data-preview-banner style="position:sticky;top:0;z-index:2147483647;margin:0;background:#111;color:#fff;font:14px/1.4 system-ui,sans-serif;padding:8px 12px;text-align:center">Koncept/f&ouml;rhandsvisning av Ville Olsson Wessling &ndash; inte f&ouml;retagets officiella webbplats. Formul&auml;r &auml;r avst&auml;ngda. &middot; Concept preview by Ville Olsson Wessling &ndash; not the official website. Forms are disabled.</div>
+<main>
+<aside class="preview-banner" aria-label="Concept preview"><strong>Concept preview</strong> · Local candidate for review. This calculator is a free promotional sample, not a new paid product.</aside>
+<header>
+<div class="brand">Wessling Digital · Free planning tool</div>
+<h1>What does your next<br>craft fair need to earn?</h1>
+<p>Start with the number of items you need to sell to cover your costs. Add your time to see a second, separate target.</p>
+<span class="tag">Free sample · No sign-up</span>
+</header>
+<noscript><p>Enable JavaScript to use the calculator. You can also calculate manually: fixed costs ÷ (selling price − variable cost), rounded up. This only works when the contribution is positive.</p></noscript>
+<div class="layout">
+<section class="panel input-panel" aria-labelledby="input-heading">
+<h2 id="input-heading">1. Enter your event numbers</h2>
+<p class="fine">The prefilled numbers are hypothetical craft-fair inputs, not the price of the Gumroad product. Amounts are in USD. Use numbers without currency symbols or commas, with up to two decimal places. Maximum per field: 1,000,000.</p>
+<form id="calculator" novalidate action="#" onsubmit="return false" data-preview="disabled">
+<div class="field"><label for="fixed">Event fixed costs ($)</label>
+<input id="fixed" name="fixed" type="text" inputmode="decimal" value="60" required aria-describedby="fixed-hint fixed-error">
+<span class="hint" id="fixed-hint">Costs that stay the same regardless of sales: stall fee, travel, display hire.</span><span class="error" id="fixed-error"></span></div>
+<div class="field"><label for="price">Selling price per item ($)</label>
+<input id="price" name="price" type="text" inputmode="decimal" value="10" required aria-describedby="price-error"><span class="error" id="price-error"></span></div>
+<div class="field"><label for="variable">Variable cost per item ($)</label>
+<input id="variable" name="variable" type="text" inputmode="decimal" value="6" required aria-describedby="variable-hint variable-error">
+<span class="hint" id="variable-hint">Include materials, packaging and selling fees for each item sold.</span><span class="error" id="variable-error"></span></div>
+<fieldset><legend>Optional: value your time</legend>
+<p class="hint">Fill in both fields, or leave both blank. Include preparation, travel, setup and selling hours. Do not count labor here if already included in your costs.</p>
+<div class="pair">
+<div class="field"><label for="hours">Total hours</label><input id="hours" name="hours" type="text" inputmode="decimal" aria-describedby="hours-error"><span class="error" id="hours-error"></span></div>
+<div class="field"><label for="rate">Hourly time value ($)</label><input id="rate" name="rate" type="text" inputmode="decimal" aria-describedby="rate-error"><span class="error" id="rate-error"></span></div>
+</div></fieldset>
+<div class="actions"><button type="submit">Calculate break-even</button><button id="example" type="button" class="secondary">Load the hypothetical $60 example</button></div>
+<p id="status" class="status" role="status" aria-live="polite" aria-atomic="true"></p>
+</form>
+</section>
+<div>
+<section class="panel" aria-labelledby="result-heading">
+<h1 class="worksheet-title">Craft Fair Break-Even Worksheet</h1>
+<h2 id="result-heading" class="screen-title">2. See your sales targets</h2>
+<p id="worksheet-warning" role="status" hidden>Worksheet unavailable. Correct the highlighted inputs and calculate again before printing.</p>
+<div id="results" hidden>
+<section class="worksheet-assumptions" aria-labelledby="worksheet-assumptions-heading">
+<h3 id="worksheet-assumptions-heading">Entered assumptions · USD</h3>
+<dl>
+<div><dt>Event fixed costs</dt><dd id="assumption-fixed"></dd></div>
+<div><dt>Selling price per item</dt><dd id="assumption-price"></dd></div>
+<div><dt>Variable cost per item</dt><dd id="assumption-variable"></dd></div>
+<div><dt>Total hours</dt><dd id="assumption-hours"></dd></div>
+<div><dt>Hourly time value</dt><dd id="assumption-rate"></dd></div>
+</dl></section>
+<div class="contribution"><span>Contribution per item</span><strong id="contribution"></strong></div>
+<p class="hint" id="margin-note"></p>
+<div class="result"><h3>Cash break-even</h3><p class="number" id="cash-units"></p><p id="cash-detail"></p></div>
+<div class="result time"><h3>Break-even including time</h3><p class="number" id="time-units"></p><p id="time-detail"></p><p class="hint">A planning target that values your time separately from cash expenses.</p></div>
+<p class="worksheet-note">Cash target = fixed costs ÷ contribution. Time-inclusive target = (fixed costs + hours × hourly value) ÷ contribution. Round up to whole items when contribution is positive. Include all relevant fees and costs; use one consistent price and variable cost. Total hours are fixed for the event. Do not count labor twice. These targets are estimates, not a sales forecast. Entered amounts describe your craft-fair scenario, not Gumroad product pricing.</p>
+</div>
+<div class="worksheet-actions"><button id="print-worksheet" type="button" class="secondary">Print / save results worksheet</button><p class="hint">Uses your current entries. Choose A4 or Letter, portrait, 100% scale, and turn off browser headers and footers for the one-page layout.</p></div>
+<div class="share-tools"><button id="copy-link" type="button" class="secondary">Copy calculator link</button><p class="hint">Copies the intended calculator URL only; availability is unverified. Your entered numbers are not included.</p><p id="copy-status" role="status" aria-live="polite" aria-atomic="true"></p><div id="copy-fallback" hidden><label for="share-url">Calculator URL — select and copy manually</label><input id="share-url" type="text" readonly></div></div>
+</section>
+<aside class="promo" aria-labelledby="ledger-heading">
+<h2 id="ledger-heading">Optional: Craft Fair Ledger</h2>
+<p>Planning your next craft fair? This free calculator helps makers and stallholders estimate sales targets and print a worksheet from their own numbers.</p>
+<p>The existing Craft Fair Ledger from Wessling Digital is a separate paid product. Before buying, review its included files and features on Gumroad to decide whether it meets your wider planning needs.</p>
+<a class="cta" id="product-link" href="https://wesslingdigital.gumroad.com/l/yxqdf" rel="noreferrer" aria-describedby="product-details">See current price on Gumroad</a>
+<p class="print-link"><a href="https://wesslingdigital.gumroad.com/l/yxqdf" rel="noreferrer">See current price on Gumroad</a>: https://wesslingdigital.gumroad.com/l/yxqdf</p>
+<p class="hint" id="product-details">Opens the existing product page on Gumroad, where you can check its current price. The calculator and its printable worksheet remain free.</p>
+</aside>
+</div>
+</div>
+<section class="panel notes" aria-labelledby="assumptions-heading">
+<h2 id="assumptions-heading">How to read the numbers</h2>
+<div class="example" aria-labelledby="example-heading">
+<h3 id="example-heading">Worked example — hypothetical numbers</h3>
+<p>All amounts and hours in this example are hypothetical craft-fair inputs, not customer results or Gumroad product pricing.</p>
+<p><strong>Fixed costs:</strong> a $45 stall fee plus $15 travel = <strong>$60</strong>. You pay these event costs regardless of how many items you sell.</p>
+<p><strong>Contribution per item:</strong> a $10 selling price minus $6 in materials, packaging and selling fees = <strong>$4</strong> left from each sale to cover fixed costs. $60 ÷ $4 = <strong>15 items</strong> to cover cash costs.</p>
+<p><strong>Round up:</strong> if fixed costs were $61 instead, $61 ÷ $4 = 15.25. You need <strong>16 whole items</strong>: 15 contribute only $60, while 16 contribute $64.</p>
+<p><strong>Value working time separately:</strong> return to $60 fixed costs and allow 5 total hours for preparation, travel, setup and selling at $12 per hour. Time value is 5 × $12 = <strong>$60</strong>. ($60 + $60) ÷ $4 = <strong>30 items including time</strong>. The cash target stays at 15 items. This values your work; it does not represent an extra cash expense unless you actually pay it. Do not count the same labor in both your item costs and this time allowance.</p>
+</div>
+<ul>
+<li><strong>Contribution</strong> = selling price − variable cost per item.</li>
+<li><strong>Cash target</strong> = fixed costs ÷ contribution, rounded up to a whole item.</li>
+<li><strong>Time-inclusive target</strong> = (fixed costs + total hours × hourly time value) ÷ contribution, rounded up. Fractional cents in time value are preserved.</li>
+<li>Assumes one consistent price and variable cost per item, and that every counted item sells. For multiple products, calculate separately with an appropriate allocation of fixed costs.</li>
+<li>Include applicable fees and taxes in your inputs. Costs of unsold inventory, discounts and other expenses are not added automatically. This is a planning estimate, not a sales forecast or guaranteed profit.</li>
+<li>With zero contribution, sales cannot recover positive costs. With negative contribution, each sale increases the loss. If costs are zero, zero sales already cover them; that does not make loss-making sales profitable.</li>
+<li>Reaching the rounded target covers the entered costs; it may leave a small surplus. Hours are treated as a fixed total for this event.</li>
+</ul>
+</section>
+<footer>Works offline after saving this file. No tracking, cookies, storage or data submission. Values stay on this page and reset when you reload. Visiting Gumroad leaves this calculator.</footer>
+</main>
+<script id="calculation-core">
+"use strict";
+(function (root) {
+  const fields = {fixed: "Event fixed costs", price: "Selling price per item",
+    variable: "Variable cost per item", hours: "Total hours", rate: "Hourly time value"};
+  function parse(value, name) {
+    const text = String(value ?? "").trim();
+    if (!/^(?:\d+)(?:\.\d{1,2})?$/.test(text))
+      throw new Error(name + ": enter a nonnegative number with up to two decimal places (for example, 12.50).");
+    const [whole, fraction = ""] = text.split(".");
+    if (whole.length > 7) throw new Error(name + ": use a value no greater than 1,000,000.");
+    const scaled = BigInt(whole) * 100n + BigInt(fraction.padEnd(2, "0"));
+    if (scaled > 100000000n) throw new Error(name + ": use a value no greater than 1,000,000.");
+    return scaled;
+  }
+  function target(cost, margin) {
+    if (cost === 0n) return {kind: "zero", units: "0"};
+    if (margin <= 0n) return {kind: "impossible", units: null};
+    return {kind: "reachable", units: ((cost + margin - 1n) / margin).toString()};
+  }
+  function calculate(raw) {
+    const values = {}, errors = {};
+    const hasHours = String(raw.hours ?? "").trim() !== "";
+    const hasRate = String(raw.rate ?? "").trim() !== "";
+    for (const key of ["fixed", "price", "variable", ...(hasHours || hasRate ? ["hours", "rate"] : [])]) {
+      try { values[key] = parse(raw[key], fields[key]); }
+      catch (error) { errors[key] = error.message; }
+    }
+    if (hasHours !== hasRate) {
+      const key = hasHours ? "rate" : "hours";
+      errors[key] = fields[key] + ": enter both time fields, or leave both blank.";
+    }
+    if (Object.keys(errors).length) return {ok: false, errors};
+    const margin = values.price - values.variable;
+    // Monetary numerators below are in ten-thousandths of a dollar.
+    const cashCost = values.fixed * 100n;
+    const timeCost = hasHours ? values.hours * values.rate : null;
+    return {ok: true, margin, cashCost, timeCost,
+      cash: target(cashCost, margin * 100n),
+      inclusive: timeCost === null ? null : target(cashCost + timeCost, margin * 100n)};
+  }
+  function money(scaled) {
+    const sign = scaled < 0n ? "-" : "";
+    const n = scaled < 0n ? -scaled : scaled;
+    const fraction = (n % 10000n).toString().padStart(4, "0").replace(/0{1,2}$/, "");
+    return sign + "$" + (n / 10000n).toLocaleString("en-US") + "." + fraction;
+  }
+  root.CraftFair = Object.freeze({calculate, money});
+})(globalThis);
+</script>
+<script id="calculator-ui">
+"use strict";
+const form = document.getElementById("calculator");
+const ids = ["fixed", "price", "variable", "hours", "rate"];
+const status = document.getElementById("status");
+const results = document.getElementById("results");
+function clearErrors() {
+  for (const id of ids) {
+    document.getElementById(id).removeAttribute("aria-invalid");
+    document.getElementById(id + "-error").textContent = "";
+  }
+}
+function showTarget(prefix, result) {
+  document.getElementById(prefix + "-units").textContent =
+    result.kind === "impossible" ? "Not reachable" :
+    BigInt(result.units).toLocaleString("en-US") + (result.units === "1" ? " item" : " items");
+}
+function render(focusError = false) {
+  clearErrors();
+  const raw = Object.fromEntries(ids.map(id => [id, document.getElementById(id).value]));
+  const result = CraftFair.calculate(raw);
+  if (!result.ok) {
+    results.hidden = true;
+    document.getElementById("worksheet-warning").hidden = false;
+    status.textContent = "Please correct the highlighted fields, then calculate again.";
+    for (const [id, message] of Object.entries(result.errors)) {
+      document.getElementById(id).setAttribute("aria-invalid", "true");
+      document.getElementById(id + "-error").textContent = message;
+    }
+    if (focusError) document.getElementById(Object.keys(result.errors)[0]).focus();
+    return;
+  }
+  results.hidden = false;
+  document.getElementById("worksheet-warning").hidden = true;
+  for (const id of ids) {
+    const value = raw[id].trim();
+    // Validated numeric strings only; normalize leading zeros without floating-point rounding.
+    const normalized = value ? value.replace(/^0+(?=\d)/, "") : "Not included";
+    document.getElementById("assumption-" + id).textContent =
+      value && id !== "hours" ? "$" + normalized : normalized;
+  }
+  document.getElementById("contribution").textContent = CraftFair.money(result.margin * 100n);
+  showTarget("cash", result.cash);
+  document.getElementById("cash-detail").textContent =
+    result.cash.kind === "impossible" ? "Sales cannot recover your fixed costs at this price and variable cost." :
+    result.cash.kind === "zero" ? "There are no fixed cash costs to recover at zero sales." :
+    "Cover " + CraftFair.money(result.cashCost) + " in fixed cash costs.";
+  document.getElementById("time-units").textContent = "Not included";
+  document.getElementById("time-detail").textContent = "Enter both optional time fields to see this separate target.";
+  if (result.inclusive) {
+    showTarget("time", result.inclusive);
+    document.getElementById("time-detail").textContent =
+      "Time value: " + CraftFair.money(result.timeCost) + ". Total to cover: " +
+      CraftFair.money(result.cashCost + result.timeCost) + "." +
+      (result.inclusive.kind === "impossible" ? " Sales cannot cover this total at the current contribution." : "");
+  }
+  document.getElementById("margin-note").textContent =
+    result.margin < 0n ? "Each sale loses " + CraftFair.money(-result.margin * 100n) +
+      " before fixed costs and time. Selling more increases the loss. Any 0-item target only describes zero sales." :
+    result.margin === 0n ? "Each sale covers only its variable cost. Nothing is left for fixed costs or time. A zero-cost target is already covered at zero sales." :
+    "Each sale contributes this amount toward fixed costs and, if included, your time.";
+  status.textContent = "Calculated. Cash break-even: " +
+    document.getElementById("cash-units").textContent + ". Including time: " +
+    document.getElementById("time-units").textContent + ".";
+}
+form.addEventListener("submit", event => { event.preventDefault(); render(true); });
+form.addEventListener("input", () => {
+  results.hidden = true;
+  document.getElementById("worksheet-warning").hidden = false;
+  status.textContent = "Inputs changed. Select Calculate break-even to update.";
+  clearErrors();
+});
+document.getElementById("example").addEventListener("click", () => {
+  const example = {fixed: "60", price: "10", variable: "6", hours: "", rate: ""};
+  for (const id of ids) document.getElementById(id).value = example[id];
+  render();
+});
+// Refresh before toolbar printing as well as the worksheet button; never print stale results.
+window.addEventListener("beforeprint", () => render());
+document.getElementById("print-worksheet").addEventListener("click", () => {
+  render(true);
+  if (!results.hidden) window.print();
+});
+const calculatorURL = "https://uggla493-collab.github.io/site-previews/craft-fair-break-even-calculator-4b9a3f36/";
+document.getElementById("share-url").value = calculatorURL;
+document.getElementById("copy-link").addEventListener("click", async () => {
+  const message = document.getElementById("copy-status");
+  const fallback = document.getElementById("copy-fallback");
+  try {
+    await navigator.clipboard.writeText(calculatorURL);
+    fallback.hidden = true;
+    message.textContent = "Calculator link copied. Your entries are not included.";
+  } catch (_) {
+    fallback.hidden = false;
+    message.textContent = "Automatic copying is unavailable. Copy the selected URL below.";
+    const field = document.getElementById("share-url");
+    field.focus();
+    field.select();
+  }
+});
+render();
+</script>
+</body>
+</html>

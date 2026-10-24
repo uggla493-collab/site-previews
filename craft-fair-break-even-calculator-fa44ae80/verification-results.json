@@ -1,0 +1,287 @@
+{
+  "checkedAt": "2026-10-23T00:07:10.531Z",
+  "runtime": "v24.21.0",
+  "passed": 68,
+  "failed": 0,
+  "scope": "Embedded calculation logic, simulated DOM interactions, static HTML checks; offline only.",
+  "liveProductPage": "Not contacted. Exact href matches the inherited local product evidence only.",
+  "limitations": [
+    "No real-browser print pagination, visual, keyboard or assistive-technology testing performed.",
+    "Paid-product files and additional capabilities cannot be verified: no product materials in the worker folder.",
+    "Live product availability and current price are unverified."
+  ],
+  "tests": [
+    {
+      "name": "60 / 4 yields exactly 15 cash units",
+      "passed": true
+    },
+    {
+      "name": "Optional time is absent when both fields are blank",
+      "passed": true
+    },
+    {
+      "name": "5 hours at $12 yields 30 inclusive units and keeps 15 cash units",
+      "passed": true
+    },
+    {
+      "name": "Partial units round UP",
+      "passed": true
+    },
+    {
+      "name": "Exact decimal boundary: 0.07 / (0.08 - 0.01) yields 1",
+      "passed": true
+    },
+    {
+      "name": "Fractional time cost is not rounded away",
+      "passed": true
+    },
+    {
+      "name": "Zero margin with costs is unreachable",
+      "passed": true
+    },
+    {
+      "name": "Negative margin with costs is unreachable",
+      "passed": true
+    },
+    {
+      "name": "Zero costs and positive contribution need zero sales",
+      "passed": true
+    },
+    {
+      "name": "Zero costs and zero margin describe zero-sales break-even",
+      "passed": true
+    },
+    {
+      "name": "Zero costs and negative margin describe zero-sales break-even",
+      "passed": true
+    },
+    {
+      "name": "Zero cash costs but positive time cost and zero margin: separate outcomes",
+      "passed": true
+    },
+    {
+      "name": "Explicit zero time produces a separate identical target",
+      "passed": true
+    },
+    {
+      "name": "Fractional hours: 1.25 x 12.50 adds 15.625 dollars",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \" \"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"-1\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"hello\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"NaN\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"Infinity\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"1e3\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"$60\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"1,000\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"0.001\"",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid fixed costs: \"1000000.01\"",
+      "passed": true
+    },
+    {
+      "name": "Reject negative price",
+      "passed": true
+    },
+    {
+      "name": "Reject negative variable",
+      "passed": true
+    },
+    {
+      "name": "Reject negative hours",
+      "passed": true
+    },
+    {
+      "name": "Reject negative rate",
+      "passed": true
+    },
+    {
+      "name": "Missing hourly rate gets a paired-fields message",
+      "passed": true
+    },
+    {
+      "name": "Missing hours gets a paired-fields message",
+      "passed": true
+    },
+    {
+      "name": "Whitespace around valid input is accepted",
+      "passed": true
+    },
+    {
+      "name": "Maximum values and tiny contribution remain exact",
+      "passed": true
+    },
+    {
+      "name": "Money display retains necessary decimal digits",
+      "passed": true
+    },
+    {
+      "name": "1000 scenarios meet their target and one fewer unit falls short",
+      "passed": true
+    },
+    {
+      "name": "UI initializes with 15 items and optional time absent",
+      "passed": true
+    },
+    {
+      "name": "UI submit computes both targets",
+      "passed": true
+    },
+    {
+      "name": "UI hides stale results on edit",
+      "passed": true
+    },
+    {
+      "name": "UI invalid input sets inline error, aria-invalid and focus",
+      "passed": true
+    },
+    {
+      "name": "Example button resets values, clears errors and recalculates",
+      "passed": true
+    },
+    {
+      "name": "UI explains negative contribution and unreachable target",
+      "passed": true
+    },
+    {
+      "name": "UI explains zero margin without suggesting more sales",
+      "passed": true
+    },
+    {
+      "name": "UI zero-cost negative-margin state warns about zero sales",
+      "passed": true
+    },
+    {
+      "name": "UI singular unit reads correctly",
+      "passed": true
+    },
+    {
+      "name": "Product href matches the inherited existing-product destination",
+      "passed": true
+    },
+    {
+      "name": "All five fields have labels and inline error references",
+      "passed": true
+    },
+    {
+      "name": "English language, viewport, live status and mobile breakpoint exist",
+      "passed": true
+    },
+    {
+      "name": "No remote assets, network APIs, storage or tracking code",
+      "passed": true
+    },
+    {
+      "name": "Assigned release path is used and the stale release URL is absent",
+      "passed": true
+    },
+    {
+      "name": "Copy hint discloses unverified availability",
+      "passed": true
+    },
+    {
+      "name": "Hypothetical example explains fixed costs, contribution, rounding and time",
+      "passed": true
+    },
+    {
+      "name": "Worked rounding example covers costs only at 16 units",
+      "passed": true
+    },
+    {
+      "name": "Visible concept-preview banner identifies a free local candidate",
+      "passed": true
+    },
+    {
+      "name": "Product promotion directs current pricing to Gumroad without fixed prices",
+      "passed": true
+    },
+    {
+      "name": "One optional product section and purchase link; free worksheet stays distinct",
+      "passed": true
+    },
+    {
+      "name": "Purchase link description resolves and CTA can wrap on narrow screens",
+      "passed": true
+    },
+    {
+      "name": "Static mobile safeguards: fluid inputs, shrinkable grid and single columns",
+      "passed": true
+    },
+    {
+      "name": "Worksheet contains all entered assumptions and absent time labels",
+      "passed": true
+    },
+    {
+      "name": "Print button recalculates current entries including time before printing",
+      "passed": true
+    },
+    {
+      "name": "Invalid worksheet button does not print and focuses error",
+      "passed": true
+    },
+    {
+      "name": "Browser print refreshes unsubmitted inputs and hides invalid stale results",
+      "passed": true
+    },
+    {
+      "name": "Print CSS preserves concept banner and includes compact assumptions, warnings and product URL",
+      "passed": true
+    },
+    {
+      "name": "Metadata contains no product offers or numeric pricing",
+      "passed": true
+    },
+    {
+      "name": "Inputs, worked example and printed worksheet distinguish product pricing",
+      "passed": true
+    },
+    {
+      "name": "Supporting documents contain no former fixed product price and retain the exact link",
+      "passed": true
+    },
+    {
+      "name": "Copy button writes the assigned release URL and announces success",
+      "passed": true
+    },
+    {
+      "name": "Clipboard denial reveals focused selected manual copy URL",
+      "passed": true
+    },
+    {
+      "name": "Missing Clipboard API also provides manual copy fallback",
+      "passed": true
+    }
+  ]
+}

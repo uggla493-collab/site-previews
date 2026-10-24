@@ -1,0 +1,101 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "width": 320,
+      "checks": {
+        "noHorizontalOverflow": true,
+        "contentFits": true,
+        "correctColumns": true,
+        "purchaseTargetFits": true,
+        "previewVisible": true
+      },
+      "outside": [],
+      "status": "PASS"
+    },
+    {
+      "width": 375,
+      "checks": {
+        "noHorizontalOverflow": true,
+        "contentFits": true,
+        "correctColumns": true,
+        "purchaseTargetFits": true,
+        "previewVisible": true
+      },
+      "outside": [],
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "checks": {
+        "noHorizontalOverflow": true,
+        "contentFits": true,
+        "correctColumns": true,
+        "purchaseTargetFits": true,
+        "previewVisible": true
+      },
+      "outside": [],
+      "status": "PASS"
+    },
+    {
+      "width": 600,
+      "checks": {
+        "noHorizontalOverflow": true,
+        "contentFits": true,
+        "correctColumns": true,
+        "purchaseTargetFits": true,
+        "previewVisible": true
+      },
+      "outside": [],
+      "status": "PASS"
+    },
+    {
+      "width": 601,
+      "checks": {
+        "noHorizontalOverflow": true,
+        "contentFits": true,
+        "correctColumns": true,
+        "purchaseTargetFits": true,
+        "previewVisible": true
+      },
+      "outside": [],
+      "status": "PASS"
+    },
+    {
+      "width": 768,
+      "checks": {
+        "noHorizontalOverflow": true,
+        "contentFits": true,
+        "correctColumns": true,
+        "purchaseTargetFits": true,
+        "previewVisible": true
+      },
+      "outside": [],
+      "status": "PASS"
+    },
+    {
+      "width": 1024,
+      "checks": {
+        "noHorizontalOverflow": true,
+        "contentFits": true,
+        "correctColumns": true,
+        "purchaseTargetFits": true,
+        "previewVisible": true
+      },
+      "outside": [],
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "checks": {
+        "noHorizontalOverflow": true,
+        "contentFits": true,
+        "correctColumns": true,
+        "purchaseTargetFits": true,
+        "previewVisible": true
+      },
+      "outside": [],
+      "status": "PASS"
+    }
+  ]
+}

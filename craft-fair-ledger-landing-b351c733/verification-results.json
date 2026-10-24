@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-24T05:16:30.209Z",
+  "stagingRoot": ".",
+  "releaseDirectory": "release",
+  "checks": [
+    "HTML doctype present",
+    "English document language",
+    "Responsive viewport present",
+    "One primary heading",
+    "No active content, forms, embeds or image dependencies",
+    "No inline event handlers",
+    "Unique element IDs",
+    "Both purchase links match supplied URL exactly",
+    "Relative asset stays inside release: ./styles.css",
+    "Relative asset exists: ./styles.css",
+    "Fragment target exists: #main",
+    "Only supplied external destination: https://wesslingdigital.gumroad.com/l/yxqdf",
+    "Only supplied external destination: https://wesslingdigital.gumroad.com/l/yxqdf",
+    "No CSS asset requests or remote imports",
+    "Balanced CSS blocks (basic structural check)",
+    "Mobile layout rule present",
+    "Keyboard focus styling present",
+    "Skip navigation present",
+    "Decorative artwork clearly labeled",
+    "No selected unsupported marketing terms or price claims (limited scan)",
+    "Release contains only the two intended static assets",
+    "Worker root matches release byte for byte: index.html",
+    "Worker root matches release byte for byte: styles.css",
+    "Local asset stays inside worker root: ./styles.css",
+    "Local asset resolves from worker root: ./styles.css"
+  ],
+  "files": [
+    "index.html",
+    "styles.css"
+  ],
+  "limitations": [
+    "No browser rendering performed.",
+    "External destination not fetched; URL equality checked offline only.",
+    "Product evidence and original HTML missing; feature claims cannot be verified."
+  ]
+}
